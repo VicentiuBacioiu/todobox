@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='box'>
+<head>
+<script type="text/javascript" src="./lib/angular.min.js"></script>
+<script type="text/javascript" src="./scripts/app.js"></script>
+<link href="./styles/bootstrap.min.css" rel="stylesheet"/>
+<link href="./styles/app.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="topbar">
+    <h4>ToDo Box</h4>
+  </div>
+  <div class="content">
+    <ul class="list-group" ng-controller="ItemController as iCtrl">
+    <li class="list-group-item bs-callout bs-callout-danger" ng-repeat="task in iCtrl.tasks">
+    <h4 class="list-group-item-header">{{task.title}}</h4>
+    <p class="list-group-item-text">{{task.content}}</p>
+    </li>
+    </ul>
+  </div>
+</body>
+</html>
