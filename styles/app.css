@@ -7,75 +7,105 @@
   font-family: "OpenSans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-.topbar {
+.top-bar {
   display: block;
   position: fixed;
-  background-color: #428BCA;
+  border-bottom: 1px solid #428BCA;
   padding: 5px 10px;
+  top: 0;
   left: 0;
   right: 0;
-  color: #FFFFFF;
+  color: #428BCA;
   height: 50px;
 }
 
 .content {
-  position: fixed;
-  top: 50px;
+  margin-top: 60px;
 }
 
-.bs-callout {
+.tdb-box {
     padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px;
+    margin: 0 0 10px 0;
+    border: 0;
+    border-left: 5px solid #EEEEEE;
+    border-radius: 0;
 }
-.bs-callout h4 {
+
+.tdb-tag {
+    padding: 5px;
+    margin: 0 0 1px 0;
+    border: 0;
+    border-radius: 0;
+    background-color: #E3F2FF;
+    color: #303030;
+    cursor: pointer;
+}
+
+.tdb-box .tdb-tag {
+  display: inline-block;
+  float: right;
+  margin-left: 2px;
+}
+
+.list-group-item.tdb-box, .list-group-item.tdb-tag {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.list-group-item.tdb-box:after{
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #EEEEEE;
+  height: 1px;
+  width: 100%;
+  margin-top: 25px;
+  margin-left: -20px;
+ }
+ .list-group-item.tdb-box:last-child:after{
+  height: 0;
+ }
+.tdb-box h4 {
     margin-top: 0;
     margin-bottom: 5px;
 }
-.bs-callout p:last-child {
+.tdb-box p:last-child {
     margin-bottom: 0;
 }
-.bs-callout code {
-    border-radius: 3px;
-}
-.bs-callout+.bs-callout {
-    margin-top: -5px;
-}
-.bs-callout-default {
+.tdb-box-gray {
     border-left-color: #777;
 }
-.bs-callout-default h4 {
+.tdb-box-gray h4 {
     color: #777;
 }
-.bs-callout-primary {
+.tdb-box-blue {
     border-left-color: #428bca;
 }
-.bs-callout-primary h4 {
+.tdb-box-blue h4 {
     color: #428bca;
 }
-.bs-callout-success {
+.tdb-box-green {
     border-left-color: #5cb85c;
 }
-.bs-callout-success h4 {
+.tdb-box-green h4 {
     color: #5cb85c;
 }
-.bs-callout-danger {
+.tdb-box-red {
     border-left-color: #d9534f;
 }
-.bs-callout-danger h4 {
+.tdb-box-red h4 {
     color: #d9534f;
 }
-.bs-callout-warning {
+.tdb-box-yellow {
     border-left-color: #f0ad4e;
 }
-.bs-callout-warning h4 {
+.tdb-box-yellow h4 {
     color: #f0ad4e;
 }
-.bs-callout-info {
+.tdb-box-cyan {
     border-left-color: #5bc0de;
 }
-.bs-callout-info h4 {
+.tdb-box-cyan h4 {
     color: #5bc0de;
 }
