@@ -21,11 +21,23 @@
     'Important'
   ];
 
-  tdb.controller('ItemController', function () {
+  tdb.controller('TaskController', function () {
+    var activeTag = '';
     this.tasks = taskList;
+    this.tags = tagsList;
+
+    this.setActiveTag = function (tag) {
+      activeTag = tag;
+    };
+
+   this.isActiveTag = function (tag) {
+      return activeTag === tag;
+    };
+
+    this.hasTag = function (task) {
+      return !activeTag || task.tags.indexOf(activeTag) !== -1;
+    };
+
   });
 
-  tdb.controller('TagController', function () {
-    this.tags = tagsList;
-  });
 })();

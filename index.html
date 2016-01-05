@@ -10,21 +10,21 @@
   <div class="top-bar">
     <h4>ToDo Box</h4>
   </div>
-  <div class="content container-fluid">
+  <div class="content container-fluid" ng-controller="TaskController as tCtrl">
     <div class="row">
       <div class="col-lg-5 col-md-4 col-sm-4">
-         <ul class="list-group" ng-controller="TagController as tagCtrl"> 
-          <li class="list-group-item tdb-tag">
+         <ul class="list-group"> 
+          <li class="list-group-item tdb-tag" ng-class="{active:tCtrl.isActiveTag('')}" ng-click="tCtrl.setActiveTag('')">
             <h5 class="list-group-item-header">All tasks</h5>
           </li>
-          <li class="list-group-item tdb-tag" ng-repeat="tag in tagCtrl.tags">
+          <li class="list-group-item tdb-tag" ng-class="{active:tCtrl.isActiveTag(tag)}" ng-repeat="tag in tCtrl.tags" ng-click="tCtrl.setActiveTag(tag)">
             <h5 class="list-group-item-header">{{tag}}</h5>
           </li>
         </ul>
       </div>
       <div class="col-lg-7 col-md-8 col-sm-8">
-        <ul class="list-group" ng-controller="ItemController as itemCtrl">
-          <li class="list-group-item tdb-box tdb-box-blue" ng-repeat="task in itemCtrl.tasks">
+        <ul class="list-group">
+          <li class="list-group-item tdb-box tdb-box-blue" ng-repeat="task in tCtrl.tasks" ng-show="tCtrl.hasTag(task)">
             <div ng-repeat="tag in task.tags">
               <div class="tdb-tag">{{tag}}</div>
             </div>
