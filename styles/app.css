@@ -45,6 +45,7 @@
   display: inline-block;
   float: right;
   margin-left: 2px;
+  cursor: default;
 }
 
 .list-group-item.tdb-box, .list-group-item.tdb-tag {
@@ -53,18 +54,18 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.list-group-item.tdb-box:after{
+.list-group-item.tdb-box:not(.ng-hide):before{
   content: "";
   display: block;
   position: absolute;
   background-color: #EEEEEE;
-  height: 1px;
+  height: 0px;
   width: 100%;
-  margin-top: 25px;
+  margin-top: -25px;
   margin-left: -20px;
  }
- .list-group-item.tdb-box:last-child:after{
-  height: 0;
+ .list-group-item.tdb-box:not(.ng-hide) ~ .list-group-item.tdb-box:not(.ng-hide):before{
+  height: 1px;
  }
 .tdb-box h4 {
     margin-top: 0;
