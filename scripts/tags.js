@@ -1,5 +1,5 @@
 (function () {
-  var tagModule = angular.module('boxtags', ['box.tasks']);
+  var tagModule = angular.module('box.tags', ['box.tasks']);
 
   tagModule.value('tagValue', {
     active: '' 

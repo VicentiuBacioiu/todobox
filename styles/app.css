@@ -1,12 +1,18 @@
 @font-face {
-    font-family: 'OpenSans'; /*a name to be used later*/
-    src: url('../fonts/OpenSansRegular.ttf'); /*URL to font*/
+  font-family: 'OpenSans'; /*a name to be used later*/
+  src: url('../fonts/OpenSansRegular.ttf'); /*URL to font*/
 }
-
 * {
-  font-family: "OpenSans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .top-bar {
   display: block;
   position: fixed;
@@ -18,43 +24,99 @@
   color: #428BCA;
   height: 50px;
 }
-
+.top-bar .menu {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 1.1em;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.top-bar .menu:hover {
+  background-color: #EEEEEE;
+}
+.top-bar h4 {
+  display: inline-block;
+}
 .content {
   margin-top: 60px;
 }
-
+.tasks, .tags {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.col-lg-0 {
+  position: relative;
+  min-height: 1px;
+  width: 0;
+  overflow: hidden;
+  float: left;
+}
 .tdb-box {
-    padding: 20px;
-    margin: 0 0 10px 0;
-    border: 0;
-    border-left: 5px solid #EEEEEE;
-    border-radius: 0;
+  padding: 20px;
+  margin: 0 0 10px 0;
+  border: 0;
+  border-left: 5px solid #EEEEEE;
+  border-radius: 0;
 }
-
+.tdb-box.editable, .tdb-box.editable:hover {
+  background-color: #FFFEB3;
+}
+.tdb-box.editable .list-group-item-header, .tdb-box.editable .list-group-item-text {
+  outline-color: transparent;
+}
+.tdb-box.editable .tdb-tag {
+  position: relative;
+}
+.tdb-box:hover {
+  background-color: #F5F5F5;
+}
+.tdb-box:hover .tdb-control {
+  display: block;
+}
+.tdb-box:hover .tdb-tag {
+  display: none;
+}
+.tdb-control {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #EEEEEE;
+  border: 1px solid #E5E5E5;
+  padding: 10px 2px;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+.tdb-control:hover {
+  background-color: #428BCA;
+  border-color: #428BCA;
+  color: #FFFFFF;
+}
 .tdb-tag {
-    padding: 5px;
-    margin: 0 0 1px 0;
-    border: 0;
-    border-radius: 0;
-    background-color: #E8EBFA;
-    color: #303030;
-    cursor: pointer;
+  padding: 5px;
+  margin: 0 0 1px 0;
+  border: 0;
+  border-radius: 0;
+  background-color: #EEEEEE;
+  color: #303030;
+  cursor: pointer;
 }
-
 .tdb-box .tdb-tag {
   display: inline-block;
   float: right;
   margin-left: 2px;
   cursor: default;
 }
-
 .list-group-item.tdb-box, .list-group-item.tdb-tag {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
-.list-group-item.tdb-box:not(.ng-hide):before{
+.list-group-item.tdb-box:not(.ng-hide):before {
   content: "";
   display: block;
   position: absolute;
@@ -63,50 +125,56 @@
   width: 100%;
   margin-top: -25px;
   margin-left: -20px;
- }
- .list-group-item.tdb-box:not(.ng-hide) ~ .list-group-item.tdb-box:not(.ng-hide):before{
+}
+.list-group-item.tdb-box:not(.ng-hide) ~ .list-group-item.tdb-box:not(.ng-hide):before {
   height: 1px;
- }
+}
 .tdb-box h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 .tdb-box p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .tdb-box-gray {
-    border-left-color: #777;
+  border-left-color: #777;
 }
 .tdb-box-gray h4 {
-    color: #777;
+  color: #777;
 }
 .tdb-box-blue {
-    border-left-color: #428bca;
+  border-left-color: #428bca;
 }
 .tdb-box-blue h4 {
-    color: #428bca;
+  color: #428bca;
 }
 .tdb-box-green {
-    border-left-color: #5cb85c;
+  border-left-color: #5cb85c;
 }
 .tdb-box-green h4 {
-    color: #5cb85c;
+  color: #5cb85c;
 }
 .tdb-box-red {
-    border-left-color: #d9534f;
+  border-left-color: #d9534f;
 }
 .tdb-box-red h4 {
-    color: #d9534f;
+  color: #d9534f;
 }
 .tdb-box-yellow {
-    border-left-color: #f0ad4e;
+  border-left-color: #f0ad4e;
 }
 .tdb-box-yellow h4 {
-    color: #f0ad4e;
+  color: #f0ad4e;
 }
 .tdb-box-cyan {
-    border-left-color: #5bc0de;
+  border-left-color: #5bc0de;
 }
 .tdb-box-cyan h4 {
-    color: #5bc0de;
+  color: #5bc0de;
+}
+@media (max-width: 767px){
+  .col-lg-0 {
+    height: 0;
+    min-height: auto;
+  }
 }

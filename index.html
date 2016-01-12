@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app='box'>
 <head>
+<script type="text/javascript" src="./lib/jquery.min.js"></script>
 <script type="text/javascript" src="./lib/angular.min.js"></script>
 <script type="text/javascript" src="./scripts/app.js"></script>
 <script type="text/javascript" src="./scripts/tasks.js"></script>
@@ -8,15 +9,16 @@
 <link href="./styles/bootstrap.min.css" rel="stylesheet"/>
 <link href="./styles/app.css" rel="stylesheet"/>
 </head>
-<body>
-  <div class="top-bar">
+<body ng-controller="AppController as appCtrl">
+  <div class="top-bar" ng-click="appCtrl.togglePanel()">
+    <div class="menu no-select"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
     <h4>ToDo Box</h4>
   </div>
   <div class="content container-fluid">
     <div class="row">
-      <div class="col-lg-5 col-md-4 col-sm-4">
+      <div class="tags" ng-class="[{'col-lg-5 col-md-4 col-sm-4':panelActive}, {'col-lg-0': !panelActive}]">
          <ul class="list-group" ng-controller="TagController as tagCtrl"> 
-          <li class="list-group-item tdb-tag" ng-class="{active:tagCtrl.isActiveTag('')}" ng-click="tagCtrl.setActiveTag('')">
+          <li class="list-group-item tdb-tag" ng-class="{active:tagCtrl.isActiveTag('')}" ng-click="tagCtrl.setActiveTag('')" >
             <h5 class="list-group-item-header">All tasks</h5>
           </li>
           <li class="list-group-item tdb-tag" ng-class="{active:tagCtrl.isActiveTag(tag)}" ng-repeat="tag in tagCtrl.tags" ng-click="tagCtrl.setActiveTag(tag)">
@@ -24,10 +26,16 @@
           </li>
         </ul>
       </div>
-      <div class="col-lg-7 col-md-8 col-sm-8">
+      <div class="tasks" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
         <ul class="list-group" ng-controller="TaskController as taskCtrl">
-          <li class="list-group-item tdb-box tdb-box-blue" ng-repeat="task in tasks" ng-show="taskCtrl.hasTag(task)">
-            <div ng-repeat="tag in task.tags">
+          <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box tdb-box-blue" ng-repeat="task in tasks" ng-show="taskCtrl.hasTag(task)">
+            <div class="tdb-control" ng-click="taskCtrl.remove(task.id)">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </div>
+            <div class="tdb-control" ng-click="taskCtrl.toggleEdit(task.id)">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </div>
+             <div ng-repeat="tag in task.tags">
               <div class="tdb-tag">{{tag}}</div>
             </div>
             <h4 class="list-group-item-header">{{task.title}}</h4>
