@@ -1,5 +1,5 @@
 (function () {
-  var tdb = angular.module('box', ['box.tasks', 'box.tags']);
+  var tdb = angular.module('box', ['box.tasks']);
 
   tdb.controller('AppController', function appController($scope) {
     $scope.panelActive = true;
