@@ -7,53 +7,60 @@
 <script type="text/javascript" src="./scripts/tasks.js"></script>
 <link href="./styles/bootstrap.min.css" rel="stylesheet"/>
 <link href="./styles/app.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-controller="AppController as appCtrl">
-  <div class="top-bar" ng-click="appCtrl.togglePanel()">
-    <div class="menu no-select"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+  <div class="top-bar shadow-bottom">
+    <div class="menu no-select spin" ng-click="appCtrl.togglePanel()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
     <h4>ToDo Box</h4>
   </div>
   <div class="content container-fluid" ng-controller="TaskController as taskCtrl">
     <div class="row">
       <div class="tags" ng-class="[{'col-lg-5 col-md-4 col-sm-4':panelActive}, {'col-lg-0': !panelActive}]">
          <ul class="list-group"> 
-          <li class="list-group-item tdb-tag" ng-class="{active:taskCtrl.isActiveTag('')}" ng-click="taskCtrl.setActiveTag('')" >
+          <li class="list-group-item tdb-tag shadow-bottom-right" ng-class="{active:taskCtrl.isActiveTag('')}" ng-click="taskCtrl.setActiveTag('')" >
             <h5 class="list-group-item-header">All tasks</h5>
           </li>
-          <li class="list-group-item tdb-tag" ng-class="{active:taskCtrl.isActiveTag(tag)}" ng-repeat="tag in tags" ng-click="taskCtrl.setActiveTag(tag)">
+          <li class="list-group-item tdb-tag shadow-bottom-right" ng-class="{active:taskCtrl.isActiveTag(tag)}" ng-repeat="tag in tags" ng-click="taskCtrl.setActiveTag(tag)">
             <h5 class="list-group-item-header">{{tag}}</h5>
           </li>
         </ul>
       </div>
       <div class="tasks" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
         <ul class="list-group">
-          <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box tdb-box-blue" ng-repeat="task in tasks" ng-show="taskCtrl.hasTag(task)" ng-class="{editable:task.editable}">
+          <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box blue shadow-bottom-right" ng-repeat="task in tasks" ng-show="taskCtrl.hasTag(task)" ng-class="[{editable:task.editable}, {done: task.done}]">
             <div class="tdb-controls" ng-hide="task.editable">
-              <div class="tdb-control" ng-click="taskCtrl.startEdit(task)">
+              <div class="tdb-control shadow-bottom-right" ng-click="taskCtrl.startEdit(task)">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </div>
-              <div class="tdb-control" ng-click="taskCtrl.remove(task.id)">
+              <div class="tdb-control shadow-bottom-right" ng-click="taskCtrl.remove(task.id)">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </div>
             </div>
             <div class="tdb-controls sticky" ng-show="task.editable">
-              <div class="tdb-control bg-green" ng-click="taskCtrl.saveChanges(task)">
+              <div class="tdb-control bg-green shadow-bottom-right" ng-click="taskCtrl.saveChanges(task)">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
               </div>
-              <div class="tdb-control bg-red" ng-click="taskCtrl.cancelEdit(task)">
+              <div class="tdb-control bg-red shadow-bottom-right" ng-click="taskCtrl.cancelEdit(task)">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </div>
             </div>
+            <input class="hidden" type="checkbox" ng-model="task.done" ng-attr-id="{{task.id + '_check'}}"/>
+            <label class="checkbox" ng-attr-for="{{task.id + '_check'}}"></label>
             <input class="list-group-item-header tdb-title" ng-readonly="!task.editable" ng-model="task.title"/>
             <input class="list-group-item-text tdb-content" ng-readonly="!task.editable" ng-model="task.content"/>
             <div class="tdb-tags">
-              <div ng-repeat="tag in task.tags" class="tdb-tag">{{tag}}<div class="tdb-tag-remove" ng-click="taskCtrl.removeTag(task, tag)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></div>
+              <div ng-repeat="tag in task.tags" class="tdb-tag shadow-bottom-right">{{tag}}<div class="tdb-tag-remove" ng-click="taskCtrl.removeTag(task, tag)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></div>
               <input class="tdb-newtag" placeholder="Add new tag..." ng-model="taskCtrl.newTag" ng-keypress="taskCtrl.addTag(task)"/>
             </div>
           </li>
         </ul>
       </div>
     </div>
+    <div class="tdb-new tdb-control bg-blue shadow-bottom-right" ng-click="taskCtrl.addTask()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </div>
   </div>
+ 
 </body>
 </html>

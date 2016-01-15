@@ -8,24 +8,27 @@
     title: 'Task 1',
     content: 'Task Content 1',
     tags: ['Personal'],
-    editable: false
+    editable: false,
+    done: false
   }, {
     id: 'task2',
     title: 'Task 2',
     content: 'Task Content 2',
     tags: ['Personal', 'Important'],
-    editable: false
+    editable: false,
+    done: false
   }, {
     id: 'task3',
     title: 'Task 3',
     content: 'Task Content 3',
     tags: ['Work'],
-    editable: false
+    editable: false,
+    done: false
   }]);
 
-  var toggleClassWithDelay = function(elem, clsName, timeout){
+  var toggleClassWithDelay = function (elem, clsName, timeout) {
     elem.addClass(clsName);
-    setTimeout(function(){
+    setTimeout(function () {
       elem.removeClass(clsName);
     }, timeout);
   };
@@ -85,12 +88,19 @@
 
     this.saveChanges = function (task) {
       task.editable = false;
+      if (task.isNew) {
+        delete task.isNew;
+      }
       $scope.tags = getTagList();
     };
 
     this.cancelEdit = function (task) {
-      var oldTask = editingTasks[task.id];
+      if (task.isNew) {
+        this.remove(task.id);
+        return;
+      }
 
+      var oldTask = editingTasks[task.id];
       task.title = oldTask.title;
       task.content = oldTask.content;
       task.tags = oldTask.tags;
@@ -107,11 +117,29 @@
         if (task.tags.indexOf(this.newTag) === -1) {
           task.tags.push(this.newTag);
           this.newTag = '';
-        }
-        else {
+        } else {
           toggleClassWithDelay(newTagEl, 'shake', 500);
         }
       }
+    };
+
+    this.addTask = function () {
+      var newTask = {
+        id: 'task4',
+        title: 'New task',
+        content: 'Task Content',
+        tags: [],
+        editable: true,
+        done: false,
+        isNew: true
+      };
+
+      var sEdit = this.startEdit;
+
+      taskList.push(newTask);
+      setTimeout(function () {
+        $('#' + newTask.id + ' .list-group-item-header').select();
+      }, 0);
     };
   });
 })();

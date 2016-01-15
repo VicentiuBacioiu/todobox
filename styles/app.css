@@ -13,9 +13,24 @@
   -ms-user-select: none;
   user-select: none;
 }
+.tdb-control.tdb-new {
+  font-size: 1.3em;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  padding: 13px 16px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+.tdb-control.tdb-new span {
+  vertical-align: top;
+}
 .top-bar {
   display: block;
   position: fixed;
+  z-index: 99;
+  background-color: #FFFFFF;
   border-bottom: 1px solid #428BCA;
   padding: 5px 10px;
   top: 0;
@@ -55,9 +70,10 @@
 }
 .tdb-box {
   padding: 20px;
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
   border: 0;
-  border-left: 5px solid #EEEEEE;
+  border: 1px solid #E0E0E0;
+  border-left: none;
   border-radius: 0;
 }
 .tdb-box.editable, .tdb-box.editable:hover {
@@ -84,47 +100,54 @@
   border: none;
   width: 100px;
   margin-left: 5px;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #C0C0C0;
   background-color: transparent;
   outline: none;
 }
-.tdb-box.editable .tdb-newtag{
+.tdb-box.editable .tdb-newtag {
   display: inline-block;
 }
 .shake {
-  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
- }
-
- @keyframes shake {
+}
+.spin:hover {
+  animation: spin 0.2s linear;
+}
+@keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
     color: red;
   }
-  
   20%, 80% {
     transform: translate3d(2px, 0, 0);
     color: red;
   }
-
   30%, 50%, 70% {
     transform: translate3d(-4px, 0, 0);
     color: red;
   }
-
   40%, 60% {
     transform: translate3d(4px, 0, 0);
     color: red;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }
 .tdb-control {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background-color: #EEEEEE;
-  border: 1px solid #E5E5E5;
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
   padding: 10px 2px;
   text-align: center;
   cursor: pointer;
@@ -137,12 +160,18 @@
 }
 .tdb-tag {
   padding: 5px 10px;
-  margin: 0 0 1px 0;
+  margin: 0 0 4px 0;
   border: 0;
   border-radius: 0;
-  background-color: #EEEEEE;
+  background-color: #F0F0F0;
   color: #303030;
   cursor: pointer;
+}
+.shadow-bottom-right {
+  box-shadow: 1px 1px 2px 0px #E0E0E0;
+}
+.shadow-bottom {
+  box-shadow: 0px 1px 3px 1px #E0E0E0;
 }
 .tdb-tag-remove {
   display: none;
@@ -162,7 +191,7 @@
 }
 .tdb-box .tdb-tag {
   display: inline-block;
-  margin-left: 2px;
+  margin-left: 5px;
   cursor: default;
 }
 .list-group-item.tdb-box, .list-group-item.tdb-tag {
@@ -171,18 +200,8 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.list-group-item.tdb-box:not(.ng-hide):before {
-  content: "";
-  display: block;
-  position: absolute;
-  background-color: #EEEEEE;
-  height: 0px;
-  width: 100%;
-  margin-top: -25px;
-  margin-left: -20px;
-}
-.list-group-item.tdb-box:not(.ng-hide) ~ .list-group-item.tdb-box:not(.ng-hide):before {
-  height: 1px;
+.tdb-box:not(.ng-hide) ~ .tdb-box:not(.ng-hide) {
+  border-top: none;
 }
 .tdb-box h4 {
   margin-top: 0;
@@ -191,21 +210,19 @@
 .tdb-box .tdb-title {
   display: block;
   font-size: 1.5em;
-  color: #428BCA;
   background-color: transparent;
   border: none;
 }
 .tdb-box .tdb-content {
   display: block;
   font-size: 1em;
-  color: #428BCA;
   background-color: transparent;
   border: none;
 }
 .tdb-box p:last-child {
   margin-bottom: 0;
 }
-.tdb-box.editable .tdb-controls.sticky{
+.tdb-box.editable .tdb-controls.sticky {
   display: block;
 }
 .tdb-box.editable .tdb-tags {
@@ -220,11 +237,72 @@
 .tdb-box-gray h4 {
   color: #777;
 }
-.tdb-box-blue {
-  border-left-color: #428bca;
+.blue .list-group-item-header {
+  color: #428BCA;
 }
-.tdb-box-blue h4 {
-  color: #428bca;
+.tdb-title, .tdb-content {
+  font-weight: normal;
+  margin-left: 30px;
+}
+.tdb-box:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  background-color: #428BCA;
+  width: 5px;
+}
+.tdb-box.done:after {
+  background-color: #C0C0C0;
+}
+label.checkbox {
+  position: absolute;
+  top: 17px;
+  cursor: pointer;
+}
+label.checkbox:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  margin-right: 3px;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+  vertical-align: top;
+  box-sizing: content-box;
+  position: absolute;
+}
+label.checkbox:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 19px;
+  height: 19px;
+  color: #555555;
+  z-index: 1;
+  box-sizing: content-box;
+}
+input[type="checkbox"]:checked + label.checkbox:after {
+  font-family: Arial;
+  content: "\2714";
+  font-size: 17px;
+  padding-left: 4px;
+  line-height: 19px;
+  padding-top: 1px;
+  color: #C0C0C0;
+}
+.tdb-box.done, .tdb-box.done .list-group-item-header {
+  color: #C0C0C0;
+}
+.tdb-box.done .tdb-tag {
+  color: #C0C0C0;
+}
+.checkbox input[type="checkbox"] {
+  display: none;
 }
 .tdb-box-green {
   border-left-color: #5cb85c;
@@ -267,6 +345,15 @@
 .bg-green:hover {
   background-color: #458A47;
   border-color: #458A47;
+}
+.bg-blue {
+  background-color: #428BCA;
+  border-color: #428BCA;
+  color: #FFFFFF;
+}
+.bg-blue:hover {
+  background-color: #3572A6;
+  border-color: #3572A6;
 }
 @media (max-width:767px) {
   .col-lg-0 {
