@@ -134,6 +134,8 @@
         isNew: true
       };
 
+      activeTag = '';
+
       var sEdit = this.startEdit;
 
       taskList.push(newTask);
