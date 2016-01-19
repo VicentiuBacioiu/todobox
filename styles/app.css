@@ -68,8 +68,18 @@
   overflow: hidden;
   float: left;
 }
+.nothing {
+  text-align: center;
+  font-size: 1.25em;
+  color: #888888;
+  padding: 20px 30px;
+}
+.nothing .smallhint {
+  font-size: 0.75em;
+  margin-top: 10px;
+}
 .tdb-box {
-  padding: 20px;
+  padding: 15px 20px 15px 45px;
   margin: 0 0 0px 0;
   border: 0;
   border: 1px solid #E0E0E0;
@@ -78,22 +88,22 @@
 }
 .tdb-box.editable, .tdb-box.editable:hover {
   background-color: #FFFEB3;
+  padding-right: 110px;
 }
 .tdb-box.editable .list-group-item-header, .tdb-box.editable .list-group-item-text {
   outline-color: transparent;
 }
 .tdb-box:hover {
   background-color: #F5F5F5;
+  padding-right: 110px;
 }
 .tdb-box:hover .tdb-controls {
   display: block;
 }
-.tdb-box:hover .tdb-tags {
-  display: none;
-}
 .tdb-controls {
   display: none;
-  float: right;
+  position: absolute;
+  right: 15px;
 }
 .tdb-box .tdb-newtag {
   display: none;
@@ -159,12 +169,13 @@
   color: #FFFFFF;
 }
 .tdb-tag {
-  padding: 5px 10px;
+  padding: 3px 8px;
   margin: 0 0 4px 0;
   border: 0;
   border-radius: 0;
   background-color: #F0F0F0;
   color: #303030;
+  font-size: 0.9em;
   cursor: pointer;
 }
 .shadow-bottom-right {
@@ -183,15 +194,18 @@
 .tdb-box.editable .tdb-tag-remove {
   display: inline-block;
 }
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; 
+}
 .tdb-box .tdb-tags {
-  position: absolute;
-  right: 20px;
-  top: 15px;
   margin-top: 5px;
+  margin-left: 0px;
 }
 .tdb-box .tdb-tag {
   display: inline-block;
-  margin-left: 5px;
+  margin-right: 5px;
   cursor: default;
 }
 .list-group-item.tdb-box, .list-group-item.tdb-tag {
@@ -212,12 +226,16 @@
   font-size: 1.5em;
   background-color: transparent;
   border: none;
+  width: 100%;
+  margin: 0;
 }
 .tdb-box .tdb-content {
   display: block;
   font-size: 1em;
   background-color: transparent;
   border: none;
+  width: 100%;
+  margin: 0;
 }
 .tdb-box p:last-child {
   margin-bottom: 0;
@@ -225,19 +243,13 @@
 .tdb-box.editable .tdb-controls.sticky {
   display: block;
 }
-.tdb-box.editable .tdb-tags {
-  position: static;
-}
-.tdb-box.editable:hover .tdb-tags {
-  display: inline-block;
-}
 .tdb-box-gray {
   border-left-color: #777;
 }
 .tdb-box-gray h4 {
   color: #777;
 }
-.blue .list-group-item-header {
+.fg-blue{
   color: #428BCA;
 }
 .tdb-title, .tdb-content {
@@ -258,8 +270,9 @@
 }
 label.checkbox {
   position: absolute;
-  top: 17px;
+  top: 12px;
   cursor: pointer;
+  margin-left: -28px;
 }
 label.checkbox:before {
   content: "";
@@ -295,7 +308,7 @@ input[type="checkbox"]:checked + label.checkbox:after {
   padding-top: 1px;
   color: #C0C0C0;
 }
-.tdb-box.done, .tdb-box.done .list-group-item-header {
+.tdb-box.done, .tdb-box.done .list-group-item-header, .tdb-box.done, .tdb-box.done .list-group-item-text {
   color: #C0C0C0;
 }
 .tdb-box.done .tdb-tag {
