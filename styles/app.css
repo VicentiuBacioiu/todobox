@@ -199,6 +199,20 @@
   overflow: hidden;
   white-space: nowrap; 
 }
+.gitlogo {
+  background-image: url('../icons/git.png');
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 24px;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.gitlogo:hover {
+  opacity: 1;
+}
 .tdb-box .tdb-tags {
   margin-top: 5px;
   margin-left: 0px;
