@@ -1,69 +1,26 @@
 <!DOCTYPE html>
 <html ng-app='box'>
-<head>
-<script type="text/javascript" src="./lib/jquery.min.js"></script>
-<script type="text/javascript" src="./lib/angular.min.js"></script>
-<script type="text/javascript" src="./scripts/storage.js"></script>
-<script type="text/javascript" src="./scripts/tasks.js"></script>
-<script type="text/javascript" src="./scripts/tasks-factory.js"></script>
-<script type="text/javascript" src="./scripts/tags.js"></script>
-<script type="text/javascript" src="./scripts/app.js"></script>
-<link href="./styles/bootstrap.min.css" rel="stylesheet"/>
-<link href="./styles/app.css" rel="stylesheet"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body ng-controller="AppController as appCtrl">
-  <div class="top-bar shadow-bottom">
-    <div class="menu no-select spin" ng-click="appCtrl.togglePanel()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
-    <h4>ToDo Box</h4>
-  </div>
-  <div class="content container-fluid">
-    <div class="row">
-      <div class="tags" ng-class="[{'col-lg-5 col-md-4 col-sm-4':panelActive}, {'col-lg-0': !panelActive}]" ng-controller="TagController as tagCtrl">
-         <ul class="list-group"> 
-          <li class="list-group-item tdb-tag shadow-bottom-right" ng-class="{active:activeTag.equals(tag)}" ng-repeat="tag in tags" ng-click="activeTag.set(tag)">
-            <h5 class="list-group-item-header ellipsis">{{tag}}</h5>
-          </li>
-        </ul>
-      </div>
-      <div class="tasks" ng-controller="TaskController as taskCtrl" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
-        <ul class="list-group" ng-show="tasks.length">
-          <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box shadow-bottom-right" ng-repeat="task in tasks" ng-show="task.hasActiveTag()" ng-class="[{editable:task.editable}, {done: task.done}]">
-            <div class="tdb-controls" ng-hide="task.editable">
-              <div class="tdb-control shadow-bottom-right" ng-click="task.edit()">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-              </div>
-              <div class="tdb-control shadow-bottom-right" ng-click="taskCtrl.remove(task)">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              </div>
-            </div>
-            <div class="tdb-controls sticky" ng-show="task.editable">
-              <div class="tdb-control bg-green shadow-bottom-right" ng-click="taskCtrl.saveChanges(task)">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-              </div>
-              <div class="tdb-control bg-red shadow-bottom-right" ng-click="taskCtrl.discardChanges(task)">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              </div>
-            </div>
-            <input class="hidden" type="checkbox" ng-model="task.done" ng-change="taskCtrl.updateTasks()" ng-attr-id="{{task.id + '_check'}}"/>
-            <label class="checkbox" ng-attr-for="{{task.id + '_check'}}"></label>
-            <input class="list-group-item-header tdb-title ellipsis fg-blue" ng-readonly="!task.editable" ng-model="task.title"/>
-            <input class="list-group-item-text tdb-content ellipsis fg-blue" ng-readonly="!task.editable" ng-model="task.content"/>
-            <div class="tdb-tags">
-              <div ng-repeat="tag in task.tags" class="tdb-tag shadow-bottom-right">{{tag}}<div class="tdb-tag-remove" ng-click="task.removeTag(tag)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></div>
-              <input class="tdb-newtag" placeholder="Add new tag..." ng-model="taskCtrl.newTag" ng-keypress="taskCtrl.addTag(task)"/>
-            </div>
-          </li>
-        </ul>
-        <div class="nothing" ng-hide="tasks.length">Nothing to do now...<div class="smallhint">Click the Add <span class="glyphicon glyphicon-plus-sign fg-blue"></span> button below to add a new task</div></div>
-
-        <div class="tdb-new tdb-control bg-blue shadow-bottom-right" ng-click="taskCtrl.addTask()">
-          <span class="glyphicon glyphicon-plus"></span>
-        </div>
+  <head>
+    <script type="text/javascript" src="./lib/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/angular.min.js"></script>
+    <script type="text/javascript" src="./scripts/storage.js"></script>
+    <script type="text/javascript" src="./scripts/tasks.js"></script>
+    <script type="text/javascript" src="./scripts/tasks-factory.js"></script>
+    <script type="text/javascript" src="./scripts/tags.js"></script>
+    <script type="text/javascript" src="./scripts/app.js"></script>
+    <link href="./styles/bootstrap.min.css" rel="stylesheet"/>
+    <link href="./styles/app.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body ng-controller="AppController as appCtrl">
+    <top-bar></top-bar>
+    <div class="content container-fluid">
+      <div class="row">
+        <tags></tags>
+        <tasks></tasks>
       </div>
     </div>
-  </div>
- 
-<div class="gitlogo" onclick="window.open('https://github.com/vicentiubacioiu/todobox')"></div>
-</body>
+    
+    <div class="gitlogo" onclick="window.open('https://github.com/vicentiubacioiu/todobox')"></div>
+  </body>
 </html>

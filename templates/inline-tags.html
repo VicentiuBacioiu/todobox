@@ -1,0 +1,4 @@
+<div class="tdb-tags">
+  <div ng-repeat="tag in task.tags" class="tdb-tag shadow-bottom-right">{{tag}}<div class="tdb-tag-remove" ng-click="task.removeTag(tag)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></div>
+  <input class="tdb-newtag" placeholder="Add new tag..." ng-model="taskCtrl.newTag" ng-keypress="taskCtrl.addTag(task)"/>
+</div>

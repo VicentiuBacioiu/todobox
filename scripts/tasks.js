@@ -1,30 +1,58 @@
 (function () {
   var tModule = angular.module('box.tasks', ['box.storage', 'box.tasks.factory', 'box.tags']);
-
+  
   var toggleClassWithDelay = function (elem, clsName, timeout) {
     elem.addClass(clsName);
     setTimeout(function () {
       elem.removeClass(clsName);
     }, timeout);
   };
-
+    
+  tModule.directive('inlineTags', function() {
+    return {
+      templateUrl: '../templates/inline-tags.html',
+      restrict: 'E'
+    };
+  });
+  
+  tModule.directive('tasks', function() {
+    return {
+      templateUrl: '../templates/tasks.html',
+      restrict: 'E'
+    };
+  });
+  
+  tModule.directive('controls', function() {
+    return {
+      templateUrl: '../templates/controls.html',
+      restrict: 'E'
+    };
+  });
+  
+  tModule.directive('newButton', function() {
+    return {
+      templateUrl: '../templates/new-button.html',
+      restrict: 'E'
+    };
+  });
+  
   tModule.controller('TaskController', ['$scope', '$rootScope', 'store', 'createTask', 'activeTag', function taskController($scope, $rootScope, store, createTask, activeTag) {
     $scope.tasks = store.getTasks();
     this.newTag = '';
-
+    
     this.addTag = function (task) {
-      if (event.keyCode !== 13) {
+      if (event.keyCode !== 13) { //not working on firefox
         return;
       }
-
+      
       var newTagEl = $('#' + task.id + " .tdb-newtag");
       if (task.addTag(this.newTag)) {
         this.newTag = '';
-      } else {
+        } else {
         toggleClassWithDelay(newTagEl, 'shake', 500);
       }
     };
-
+    
     this.remove = function (task) {
       for (var i = $scope.tasks.length - 1; i >= 0; i--) {
         if ($scope.tasks[i].id === task.id) {
@@ -34,40 +62,42 @@
         }
       }
     };
-
+    
     this.discardChanges = function (task) {
       if (task.isNew) {
         this.remove(task);
-      } else {
+        } else {
         task.discardChanges();
       }
     };
-
+    
     this.saveChanges = function (task) {
       task.saveChanges();
       $rootScope.$broadcast('update', $scope.tasks);
     };
-
+    
     this.updateTasks = function () {
       store.setTasks($scope.tasks);
     };
-
+    
     this.addTask = function () {
       var newTask = createTask({
-          title: 'New task',
-          content: 'Task content goes here',
-          tags: activeTag.isDefault() ? [] : [activeTag.get()],
-          isNew: true
-        }),
-        sEdit = this.startEdit;
-
+      title : 'New task',
+      content : 'Task content goes here',
+      tags : activeTag.isDefault() ? [] : [activeTag.get()],
+      isNew : true
+      }),
+      sEdit = this.startEdit;
+      
       $scope.tasks.push(newTask);
       $rootScope.$broadcast('update', $scope.tasks);
       setTimeout(function () {
-        $('#' + newTask.id + ' .list-group-item-header').select();
+      $('#' + newTask.id + ' .list-group-item-header').select();
       }, 0);
-    };
-
-    $rootScope.$on('update', this.updateTasks);
-  }]);
-})();
+      };
+      
+      $rootScope.$on('update', this.updateTasks);
+      }
+      ]);
+      })();
+            
