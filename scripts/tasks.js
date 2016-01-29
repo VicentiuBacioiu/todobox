@@ -23,21 +23,21 @@
   
   tModule.directive('tasks', function() {
     return {
-      templateUrl: '../templates/tasks.html',
+      templateUrl: 'templates/tasks.html',
       restrict: 'E'
     };
   });
   
   tModule.directive('controls', function() {
     return {
-      templateUrl: '../templates/controls.html',
+      templateUrl: 'templates/controls.html',
       restrict: 'E'
     };
   });
   
   tModule.directive('newButton', function() {
     return {
-      templateUrl: '../templates/new-button.html',
+      templateUrl: 'templates/new-button.html',
       restrict: 'E'
     };
   });

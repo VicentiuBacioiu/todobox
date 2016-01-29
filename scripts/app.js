@@ -3,7 +3,7 @@
   
   tdb.directive('topBar', function() {
     return {
-      templateUrl: '../templates/top-bar.html',
+      templateUrl: 'templates/top-bar.html',
       restrict: 'E'
     };
   });

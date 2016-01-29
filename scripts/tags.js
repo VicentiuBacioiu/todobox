@@ -28,7 +28,7 @@
   
   tagModule.directive('tags', function() {
     return {
-      templateUrl: '../templates/tags.html',
+      templateUrl: 'templates/tags.html',
       restrict: 'E'
     };
   });
