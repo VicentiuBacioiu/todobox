@@ -1,17 +1,17 @@
-<div class="tasks" ng-controller="TaskController as taskCtrl" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
+<div class="tasks transition-ease" ng-controller="TaskController as taskCtrl" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
   <ul class="list-group" ng-show="tasks.length">
-    <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box shadow-bottom-right" ng-repeat="task in tasks | filter:searchText" ng-show="task.hasActiveTag()" ng-class="[{editable:task.editable}, {done: task.done}]">
+    <li ng-attr-id="{{ task.id }}" class="list-group-item tdb-box shadow-bottom-right no-radius {{task.getColor('fg')}}" ng-repeat="task in tasks | filter:searchText" ng-show="task.hasActiveTag()" ng-class="[{editable:task.editable}, {done: task.done}]">
       <controls></controls>
       <input class="hidden" type="checkbox" ng-model="task.done" ng-change="taskCtrl.updateTasks()" ng-attr-id="{{task.id + '_check'}}"/>
       <label class="checkbox" ng-attr-for="{{task.id + '_check'}}"></label>
-      <input class="list-group-item-header tdb-title ellipsis fg-blue" ng-readonly="!task.editable" ng-model="task.title"/>
-      <input class="list-group-item-text tdb-content ellipsis fg-blue" ng-readonly="!task.editable" ng-model="task.content"/>
+      <input class="list-group-item-header tdb-title ellipsis" ng-readonly="!task.editable" ng-model="task.title"/>
+      <input class="list-group-item-text tdb-content ellipsis" ng-readonly="!task.editable" ng-model="task.content"/>
       <inline-tags></inline-tags>
     </li>
   </ul>
   <div class="nothing" ng-hide="tasks.length">Nothing to do now...<div class="smallhint">Click the Add <span class="glyphicon glyphicon-plus-sign fg-blue"></span> button below to add a new task</div></div>
-<div class="nothing" ng-hide="(tasks | filter:searchText).length">We couldn't find what you're looking for...<div class="smallhint">Make sure you double-check the spelling in the search box</div></div>
+  <div class="nothing" ng-hide="(tasks | filter:searchText).length || !searchText">We couldn't find what you're looking for...<div class="smallhint">Make sure to double-check the spelling in the search box</div></div>
   
   <new-button></new-button>
-
+  
 </div>

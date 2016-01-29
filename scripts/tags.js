@@ -1,9 +1,12 @@
 (function () {
-  var tagModule = angular.module('box.tags', ['box.storage']),
-  allTag = 'All tasks';
+  var tagModule = angular.module('box.tags', ['box.tags.factory']),
+  allTag = {
+    content: 'All tasks',
+    color: 'primary'
+  };
   
   tagModule.factory('activeTag', function () {
-    var aTag = allTag;
+    var aTag = allTag.content;
     return {
       get: function () {
         return aTag;
@@ -15,10 +18,10 @@
         return aTag === val;
       },
       isDefault: function () {
-        return aTag === allTag;
+        return aTag === allTag.content;
       },
       reset: function(){
-        aTag = allTag;
+        aTag = allTag.content;
       }
     };
   });
@@ -30,7 +33,7 @@
     };
   });
   
-  tagModule.controller('TagController', ['$scope', '$rootScope', '$filter', 'store', 'activeTag', function ($scope, $rootScope, $filter, $store, $activeTag) {
+  tagModule.controller('TagController', ['$scope', '$rootScope', '$filter', 'store', 'activeTag', 'createTag', function ($scope, $rootScope, $filter, $store, $activeTag, createTag) {
     var getTags = function (tasks, filterText) {
       var i,
       tagsList = [],
@@ -44,9 +47,9 @@
       }
       
       for (i = 0; i < allTags.length; i++) {
-        if (seen[allTags[i]] !== 1) {
-          seen[allTags[i]] = 1;
-          tagsList.push(allTags[i]);
+        if (seen[allTags[i].content] !== 1) {
+          seen[allTags[i].content] = 1;
+          tagsList.push(createTag(allTags[i].content));
         }
       }
       

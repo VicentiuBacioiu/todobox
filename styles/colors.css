@@ -1,0 +1,131 @@
+/* Common colors */
+/* Specific colors */
+/* Generated styles for each color */
+.fg-primary-color {
+  color: #428BCA; }
+
+.fg-primary-color:after {
+  background-color: #428BCA; }
+
+.bg-primary-color:hover {
+  background-color: #428BCA;
+  border-color: #428BCA;
+  color: #FFFFFF; }
+
+.fg-cyan-color {
+  color: #739D9E; }
+
+.fg-cyan-color:after {
+  background-color: #739D9E; }
+
+.bg-cyan-color:hover {
+  background-color: #739D9E;
+  border-color: #739D9E;
+  color: #FFFFFF; }
+
+.fg-green-color {
+  color: #879E73; }
+
+.fg-green-color:after {
+  background-color: #879E73; }
+
+.bg-green-color:hover {
+  background-color: #879E73;
+  border-color: #879E73;
+  color: #FFFFFF; }
+
+.fg-magenta-color {
+  color: #8A739E; }
+
+.fg-magenta-color:after {
+  background-color: #8A739E; }
+
+.bg-magenta-color:hover {
+  background-color: #8A739E;
+  border-color: #8A739E;
+  color: #FFFFFF; }
+
+.fg-crimson-color {
+  color: #9E7573; }
+
+.fg-crimson-color:after {
+  background-color: #9E7573; }
+
+.bg-crimson-color:hover {
+  background-color: #9E7573;
+  border-color: #9E7573;
+  color: #FFFFFF; }
+
+.fg-emerald-color {
+  color: #A7AD7F; }
+
+.fg-emerald-color:after {
+  background-color: #A7AD7F; }
+
+.bg-emerald-color:hover {
+  background-color: #A7AD7F;
+  border-color: #A7AD7F;
+  color: #FFFFFF; }
+
+.fg-darkblue-color {
+  color: #7F8FA3; }
+
+.fg-darkblue-color:after {
+  background-color: #7F8FA3; }
+
+.bg-darkblue-color:hover {
+  background-color: #7F8FA3;
+  border-color: #7F8FA3;
+  color: #FFFFFF; }
+
+.fg-purple-color {
+  color: #A880A4; }
+
+.fg-purple-color:after {
+  background-color: #A880A4; }
+
+.bg-purple-color:hover {
+  background-color: #A880A4;
+  border-color: #A880A4;
+  color: #FFFFFF; }
+
+.fg-brown-color {
+  color: #9E8F73; }
+
+.fg-brown-color:after {
+  background-color: #9E8F73; }
+
+.bg-brown-color:hover {
+  background-color: #9E8F73;
+  border-color: #9E8F73;
+  color: #FFFFFF; }
+
+/* Controls background styles */
+.control-bg-primary {
+  background-color: #428BCA;
+  border-color: #428BCA;
+  color: #FFFFFF; }
+
+.control-bg-primary:hover {
+  background-color: #3572A6;
+  border-color: #3572A6; }
+
+.control-bg-cancel {
+  background-color: #B35F47;
+  border-color: #B35F47;
+  color: #FFFFFF; }
+
+.control-bg-cancel:hover {
+  background-color: #A34A31;
+  border-color: #A34A31; }
+
+.control-bg-ok {
+  background-color: #5CAD5F;
+  border-color: #5CAD5F;
+  color: #FFFFFF; }
+
+.control-bg-ok:hover {
+  background-color: #458A47;
+  border-color: #458A47; }
+
+/*# sourceMappingURL=colors.css.map */

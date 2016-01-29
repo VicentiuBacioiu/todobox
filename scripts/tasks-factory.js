@@ -1,5 +1,5 @@
 (function () {
-  var tCreatorModule = angular.module('box.tasks.factory', ['box.tags']);
+  var tCreatorModule = angular.module('box.tasks.factory', ['box.tags', 'box.tags.factory']);
   
   var getNewId = function () {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -10,7 +10,7 @@
   
   var oldTask;
   
-  var Task = function (options, activeTag) {
+  var Task = function (options, activeTag, createTag) {
     this.id = getNewId();
     this.title = options.title;
     this.content = options.content;
@@ -19,8 +19,17 @@
     this.done = options.done;
     this.isNew = options.isNew;
     
+    this.hasTag = function(tag) {
+      for(var i=0; i < this.tags.length; i++) {
+        if(this.tags[i].content === tag){
+          return true;
+        }
+      }
+      return false;
+    };
+    
     this.hasActiveTag = function () {
-      return activeTag.isDefault() || this.tags.indexOf(activeTag.get()) !== -1;
+      return activeTag.isDefault() || this.hasTag(activeTag.get())
     };
     
     this.removeTag = function (tag) {
@@ -28,13 +37,21 @@
     };
     
     this.addTag = function (newTag) {
-      if (this.tags.indexOf(newTag) !== -1) {
+      if (this.hasTag(newTag)) {
         return false;
       }
       
-      this.tags.push(newTag);
+      this.tags.push(createTag(newTag));
       return true;
     };
+    
+    this.getColor = function(colorType) {
+      var colorSuffix = 'primary';
+      if(this.tags.length){
+        colorSuffix = this.tags[0].color ;
+      }
+      return colorType + '-' + colorSuffix + '-color';
+    }
     
     this.edit = function () {
       oldTask = angular.copy(this);
@@ -55,9 +72,9 @@
     };
   };
   
-  tCreatorModule.factory('createTask', ['activeTag', function (activeTag) {
-  return function (options) {
-  return new Task(options, activeTag);
+  tCreatorModule.factory('createTask', ['activeTag', 'createTag', function (activeTag, createTag) {
+    return function (options) {
+    return new Task(options, activeTag, createTag);
   };
   }]);
-  })();      
+})();          

@@ -1,23 +1,23 @@
 (function () {
-  var sModule = angular.module('box.storage', ['box.tasks.factory']);
+  var sModule = angular.module('box.storage', ['box.tasks.factory', 'box.tags.factory']);
   
-  sModule.factory('store', ['createTask', function (createTask) {
-    var storageId = 'ToDoBox_Storage',
-    dummyTask = createTask({
+  sModule.factory('store', ['createTask', 'createTag', function (createTask, createTag) {
+    var taskStorageId = 'ToDoBox_Tasks',
+    dummyTask = createTask({ //todo remove this logic, leave only get/set
       title : 'Get started',
       content : 'This is a sample task to get you started',
-      tags : ['Sample']
+      tags : [createTag('Sample')]
     }),
     dummyTask2 = createTask({
       title : 'Just another one',
       content : 'This is another task used to showcase the filtering capability',
-      tags : ['Personal']
+      tags : [createTag('Personal')]
     }),
     dummyList = [dummyTask, dummyTask2];
     
     return {
       getTasks : function () {
-        var json = localStorage.getItem(storageId);
+        var json = localStorage.getItem(taskStorageId);
         if (!json) {
           return dummyList;
         }
@@ -35,7 +35,7 @@
         return taskList;
       },
       setTasks : function (data) {
-        localStorage.setItem(storageId, JSON.stringify(data));
+        localStorage.setItem(taskStorageId, JSON.stringify(data));
       }
     };
   }

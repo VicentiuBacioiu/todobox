@@ -11,11 +11,11 @@
   tdb.controller('AppController', function appController($scope) {
     $scope.panelActive = true;
     
-    this.filterUpdate = function(text) {
-      if(event.keyCode==8){
-        //clear search box on ESC
+    this.filterUpdate = function(event) {
+      if(event.which === 27){
+        $scope.searchText = '';
       }
-      $scope.$broadcast('filterUpdate', text);
+      $scope.$broadcast('filterUpdate', $scope.searchText);
     };
     
     this.togglePanel = function () {

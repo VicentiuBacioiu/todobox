@@ -7,7 +7,13 @@
       elem.removeClass(clsName);
     }, timeout);
   };
-    
+  
+  tModule.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+  });
+  
   tModule.directive('inlineTags', function() {
     return {
       templateUrl: '../templates/inline-tags.html',
@@ -36,20 +42,25 @@
     };
   });
   
-  tModule.controller('TaskController', ['$scope', '$rootScope', 'store', 'createTask', 'activeTag', function taskController($scope, $rootScope, store, createTask, activeTag) {
+  tModule.controller('TaskController', ['$scope', '$rootScope', '$filter', 'store', 'createTask', 'activeTag', function taskController($scope, $rootScope, $filter, store, createTask, activeTag) {
+    var separatorKeys = [9, 13, 186, 188]; //Tab, Enter, Semicolumn, Column
     $scope.tasks = store.getTasks();
     this.newTag = '';
     
-    this.addTag = function (task) {
-      if (event.keyCode !== 13) { //not working on firefox
+    this.addTag = function (event, task) {
+      if ((event && (separatorKeys.indexOf(event.which) === -1 || event.shiftKey)) || !this.newTag.length) {
         return;
       }
       
       var newTagEl = $('#' + task.id + " .tdb-newtag");
-      if (task.addTag(this.newTag)) {
+      if (task.addTag($filter('capitalize')(this.newTag))) {
         this.newTag = '';
         } else {
         toggleClassWithDelay(newTagEl, 'shake', 500);
+      }
+      
+      if(event){
+        event.preventDefault();
       }
     };
     
@@ -72,6 +83,7 @@
     };
     
     this.saveChanges = function (task) {
+      this.addTag(null, task);
       task.saveChanges();
       $rootScope.$broadcast('update', $scope.tasks);
     };
@@ -82,22 +94,21 @@
     
     this.addTask = function () {
       var newTask = createTask({
-      title : 'New task',
-      content : 'Task content goes here',
-      tags : activeTag.isDefault() ? [] : [activeTag.get()],
-      isNew : true
+        title : 'New task',
+        content : 'Task content goes here',
+        tags : activeTag.isDefault() ? [] : [activeTag.get()],
+        isNew : true
       }),
       sEdit = this.startEdit;
       
       $scope.tasks.push(newTask);
       $rootScope.$broadcast('update', $scope.tasks);
       setTimeout(function () {
-      $('#' + newTask.id + ' .list-group-item-header').select();
+        $('#' + newTask.id + ' .list-group-item-header').select();
       }, 0);
-      };
-      
-      $rootScope.$on('update', this.updateTasks);
-      }
-      ]);
-      })();
-            
+    };
+    
+    $rootScope.$on('update', this.updateTasks);
+  }
+  ]);
+})();

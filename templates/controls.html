@@ -1,16 +1,16 @@
 <div class="tdb-controls" ng-hide="task.editable">
-  <div class="tdb-control shadow-bottom-right" ng-click="task.edit()">
+  <div class="tdb-control shadow-bottom-right {{task.getColor('bg')}}" ng-click="task.edit()">
     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
   </div>
-  <div class="tdb-control shadow-bottom-right" ng-click="taskCtrl.remove(task)">
+  <div class="tdb-control shadow-bottom-right {{task.getColor('bg')}}" ng-click="taskCtrl.remove(task)">
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
   </div>
 </div>
 <div class="tdb-controls sticky" ng-show="task.editable">
-  <div class="tdb-control bg-green shadow-bottom-right" ng-click="taskCtrl.saveChanges(task)">
+  <div class="tdb-control shadow-bottom-right control-bg-ok" ng-click="taskCtrl.saveChanges(task)">
     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
   </div>
-  <div class="tdb-control bg-red shadow-bottom-right" ng-click="taskCtrl.discardChanges(task)">
+  <div class="tdb-control shadow-bottom-right control-bg-cancel" ng-click="taskCtrl.discardChanges(task)">
     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
   </div>
 </div>

@@ -5,7 +5,7 @@
       <h4>ToDo Box</h4>
     </div>
     <div class="col-lg-7 col-md-8 col-sm-8 col-xs-8">
-        <input type="text" class="form-control search-box" placeholder="Search..." ng-model="searchText" ng-keyup="appCtrl.filterUpdate(searchText)">
+        <input type="text" id="searchBox" class="form-control search-box" placeholder="Search..." ng-model="searchText" ng-keyup="appCtrl.filterUpdate($event)">
     </div>
   </div>
 </div>

@@ -1,0 +1,48 @@
+/* General tag styles */
+.tdb-tag {
+  padding: 3px 8px;
+  margin: 0 0 4px 0;
+  border: 0;
+  border-radius: 0;
+  background-color: #F0F0F0;
+  color: #303030;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.tdb-tag .list-group-item-header {
+  line-height: 1.2em;
+}
+.tdb-tag-remove {
+  display: none;
+  vertical-align: bottom;
+  padding: 0 5px;
+  margin-right: -5px;
+  cursor: pointer;
+}
+
+/* Inline tag styles */
+.tdb-box.editable .tdb-tag-remove {
+  display: inline-block;
+}
+.tdb-box .tdb-tags {
+  margin-top: 5px;
+  margin-left: 0px;
+}
+.tdb-box .tdb-tag {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: default;
+}    
+.tdb-box .tdb-newtag {
+  display: none;
+  border: none;
+  width: 100px;
+  margin-left: 5px;
+  border-bottom: 1px solid #C0C0C0;
+  color: #444444;
+  background-color: transparent;
+  outline: none;
+}
+.tdb-box.editable .tdb-newtag {
+  display: inline-block;
+}
