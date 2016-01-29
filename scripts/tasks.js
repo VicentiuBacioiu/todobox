@@ -16,7 +16,7 @@
   
   tModule.directive('inlineTags', function() {
     return {
-      templateUrl: '../templates/inline-tags.html',
+      templateUrl: 'templates/inline-tags.html',
       restrict: 'E'
     };
   });
