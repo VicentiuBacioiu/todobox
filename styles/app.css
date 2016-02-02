@@ -39,11 +39,20 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+.flipped {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 .content {
   margin-top: 60px;
 }
-.shadow-bottom-right {
-  box-shadow: 1px 1px 2px 0px #E0E0E0;
+.shadow-heavy {
+  box-shadow: 1px 1px 2px #C0C0C0;
+}
+.shadow-light {
+  box-shadow: 1px 1px 2px #E0E0E0;
 }
 .shadow-bottom {
   box-shadow: 0px 1px 3px 1px #E0E0E0;
@@ -58,101 +67,104 @@
   background-repeat: no-repeat;
   width: 100px;
   height: 24px;
-  position: absolute;
-  bottom: 10px;
+  position: fixed;
+  bottom: 15px;
   left: 15px;
-  opacity: 0.5;
+  opacity: 0.2;
   cursor: pointer;
-}
-.gitlogo:hover {
-opacity: 1;
 }
 
 /* Top bar */
 input.search-box {
-border-radius: 0;
-margin: 2px 0;
+  border-radius: 0;
+  margin: 2px 0;
 }
 input.search-box:focus{
-box-shadow: inset 0 1px 1px rgba(102,175,233,.6);
--webkit-box-shadow: inset 0 1px 1px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(102,175,233,.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(102,175,233,.6);
 }
 .top-bar {
-display: block;
-position: fixed;
-z-index: 99;
-background-color: #FFFFFF;
-border-bottom: 1px solid #428BCA;
-padding-top: 5px;
-top: 0;
-left: 0;
-right: 0;
-color: #428BCA;
-height: 50px;
+  display: block;
+  position: fixed;
+  z-index: 99;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #428BCA;
+  padding-top: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #428BCA;
+  height: 50px;
 }
 .top-bar .menu {
-display: inline-block;
-margin-right: 5px;
-font-size: 1.1em;
-padding: 2px 8px;
-cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 1.1em;
+  padding: 2px 8px;
+  cursor: pointer;
 }
 .top-bar .menu:hover {
-background-color: #EEEEEE;
+  background-color: #EEEEEE;
 }
 .top-bar h4 {
-display: inline-block;
+  display: inline-block;
 }
 
 /* Checkbox style */
 label.checkbox {
-position: absolute;
-top: 12px;
-cursor: pointer;
-margin-left: -28px;
+  position: absolute;
+  top: 12px;
+  cursor: pointer;
+  margin-left: -28px;
 }
 label.checkbox:before {
-content: "";
-display: inline-block;
-width: 20px;
-height: 20px;
-margin-left: 0;
-margin-right: 3px;
-border: 1px solid #cccccc;
-background-color: #fff;
-vertical-align: top;
-box-sizing: content-box;
-position: absolute;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  margin-right: 3px;
+  border: 1px solid #cccccc;
+  background-color: #fff;
+  vertical-align: top;
+  box-sizing: content-box;
+  position: absolute;
 }
 label.checkbox:after {
-content: "";
-display: inline-block;
-position: absolute;
-left: 0;
-top: 0;
-width: 19px;
-height: 19px;
-color: #555555;
-z-index: 1;
-box-sizing: content-box;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 19px;
+  height: 19px;
+  color: #555555;
+  z-index: 1;
+  box-sizing: content-box;
 }
 input[type="checkbox"]:checked + label.checkbox:after {
-font-family: Arial;
-content: "\2714";
-font-size: 17px;
-padding-left: 4px;
-line-height: 19px;
-padding-top: 1px;
-color: #C0C0C0;
+  font-family: Arial;
+  content: "\2714";
+  font-size: 17px;
+  padding-left: 4px;
+  line-height: 19px;
+  padding-top: 1px;
+  color: #C0C0C0;
 }
 .checkbox input[type="checkbox"] {
-display: none;
+  display: none;
 }
 
 /* Media queries */
 @media (max-width:767px) {
-.col-lg-0 {
-height: 0;
-min-height: auto;
-}
+  .col-lg-0 {
+    height: 0;
+    min-height: auto;
+  }
+}  
+
+@media (min-width: 768px) {
+  .gitlogo:hover {
+    opacity: 0.7;
+  }
 }

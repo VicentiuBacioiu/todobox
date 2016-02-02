@@ -1,9 +1,12 @@
 /* Common colors */
 $white: #FFFFFF;
+$darkgrey: #444444;
 $primary-color: #428BCA;
 $primary-hover: #3572A6;
 $cancel-color: #B35F47;
 $cancel-hover: #A34A31;
+$edit-color:#EBD373;
+$edit-hover: #E0CB75;
 $ok-color: #5CAD5F;
 $ok-hover: #458A47;
 
@@ -26,13 +29,13 @@ brown-color: #9E8F73
     color: $color;
   }
   .fg-#{$name}:after {
-    background-color: $color;
-  }
-  .bg-#{$name}:hover{
-    background-color: $color;
-    border-color: $color;
-    color: $white;
-  }
+  background-color: $color;
+}
+.bg-#{$name}:hover{
+background-color: $color;
+border-color: $color;
+color: $white;
+}
 }
 
 /* Controls background styles */
@@ -45,10 +48,19 @@ brown-color: #9E8F73
   background-color: $primary-hover;
   border-color: $primary-hover;
 }
+.control-bg-edit {
+  background-color: $edit-color;
+  border-color: $edit-color;
+  color: $darkgrey;
+}
+.control-bg-edit:hover {
+  background-color: $edit-hover;
+  border-color: $edit-hover;
+}
 .control-bg-cancel {
   background-color: $cancel-color;
   border-color: $cancel-color;
-color: $white;
+  color: $white;
 }
 .control-bg-cancel:hover {
   background-color: $cancel-hover;

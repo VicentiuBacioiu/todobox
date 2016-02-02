@@ -70,11 +70,15 @@
       this.tags = oldTask.tags;
       this.editable = false;
     };
+    
+    this.undoDelete = function() {
+      this.deleted = false;
+    };
   };
   
   tCreatorModule.factory('createTask', ['activeTag', 'createTag', function (activeTag, createTag) {
     return function (options) {
-    return new Task(options, activeTag, createTag);
-  };
+      return new Task(options, activeTag, createTag);
+    };
   }]);
 })();          

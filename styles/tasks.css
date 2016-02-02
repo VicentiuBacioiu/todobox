@@ -7,6 +7,9 @@
   border-left: none;
   border-radius: 0;
 }
+.tasks .list-group {
+  position: relative;
+}
 .tdb-box.editable, .tdb-box.editable:hover {
   background-color: #FFFEB3;
   padding-right: 110px;
@@ -18,8 +21,15 @@
   background-color: #F5F5F5;
   padding-right: 110px;
 }
+.supports-touch .tdb-box:hover {
+  background-color: #FFFFFF;
+  padding-right: 20px;
+}
 .tdb-box:hover .tdb-controls {
   display: block;
+}
+.supports-touch .tdb-box:hover .tdb-controls {
+  display: none;
 }
 .tdb-box:not(.ng-hide) ~ .tdb-box:not(.ng-hide) {
   border-top: none;
@@ -62,6 +72,9 @@
   bottom: 8px;
   width: 5px;
 }
+.tdb-box:hover:after {
+  border-color: #F5F5F5;
+}
 .tdb-box.done:after {
   background-color: #C0C0C0;
 }
@@ -70,7 +83,57 @@
 }
 .tdb-box.done .tdb-tag {
   color: #C0C0C0;
-}          
+}       
+.tdb-box .order-handle {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 15px;
+  bottom: 0;
+  cursor: move;
+  z-index: 99;
+}
+.tdb-box .swipe-handle {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  right: 0;
+  bottom: 0;
+  cursor: move;
+  z-index: 99;
+}
+
+
+.swipe-background {
+  display: none;
+  position: absolute;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.swipe-background span {
+  display: block;
+  top: 50%;
+  position: absolute;
+  margin-top: -10px;
+  font-size: 1.2em;
+}
+
+.swipe-background span.delete {
+  right: 15px;
+}
+
+.swipe-background span.edit {
+  left: 15px;
+}
+
+.swipe-background.control-bg-cancel span.edit {
+  display: none;
+}
+
+.swipe-background.control-bg-edit span.delete {
+  display: none;
+}
 
 /* Controls */
 .tdb-controls {
@@ -91,15 +154,52 @@
   display: inline-block;
 }
 .tdb-control.tdb-new {
-  font-size: 1.3em;
+  font-size: 2em;
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  padding: 13px 16px;
+  line-height: 46px;
+  padding: 0;
   position: fixed;
   bottom: 10px;
   right: 10px;
+  z-index: 100;
 }
-.tdb-control.tdb-new span {
-  vertical-align: top;
+.tdb-control.tdb-new span:before{
+  content: "+";
+}
+.tdb-undo {
+  padding: 8px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: inline-block;
+  position: fixed;
+  bottom: 15px;
+  z-index: 99;
+}
+.tdb-undo>div {
+  position: absolute;
+  top: 50%;
+  margin-top: -14px;
+}
+.tdb-undo span.glyphicon {
+  font-size: 1.25em;
+  display: inline-block;
+  margin-right: 5px;
+  line-height: 1.15em;
+  vertical-align: bottom;
+}
+.tdb-undo span.undo-link {
+  font-weight: bold;
+}
+.supports-touch .tdb-undo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: none;
+  bottom: 0;
+  top: 0;
+}
+.supports-touch .tdb-box.deleted .tdb-undo {
+  display: block;
 }

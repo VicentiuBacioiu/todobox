@@ -26,13 +26,6 @@
     };
   });
   
-  tagModule.directive('tags', function() {
-    return {
-      templateUrl: 'templates/tags.html',
-      restrict: 'E'
-    };
-  });
-  
   tagModule.controller('TagController', ['$scope', '$rootScope', '$filter', 'store', 'activeTag', 'createTag', function ($scope, $rootScope, $filter, $store, $activeTag, createTag) {
     var getTags = function (tasks, filterText) {
       var i,

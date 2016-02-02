@@ -110,6 +110,15 @@
   background-color: #3572A6;
   border-color: #3572A6; }
 
+.control-bg-edit {
+  background-color: #EBD373;
+  border-color: #EBD373;
+  color: #444444; }
+
+.control-bg-edit:hover {
+  background-color: #E0CB75;
+  border-color: #E0CB75; }
+
 .control-bg-cancel {
   background-color: #B35F47;
   border-color: #B35F47;

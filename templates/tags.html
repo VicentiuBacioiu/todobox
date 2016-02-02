@@ -1,6 +1,6 @@
 <div class="tags transition-ease" ng-class="[{'col-lg-5 col-md-4 col-sm-4':panelActive}, {'col-lg-0': !panelActive}]" ng-controller="TagController as tagCtrl">
   <ul class="list-group"> 
-    <li class="list-group-item tdb-tag shadow-bottom-right no-radius" ng-class="{active:activeTag.equals(tag.content)}" ng-repeat="tag in tags" ng-click="activeTag.set(tag.content)">
+    <li class="list-group-item tdb-tag shadow-light no-radius" ng-class="{active:activeTag.equals(tag.content)}" ng-repeat="tag in tags" ng-click="activeTag.set(tag.content)">
       <h5 class="list-group-item-header ellipsis">{{tag.content}}</h5>
     </li>
   </ul>
