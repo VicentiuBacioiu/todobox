@@ -10,34 +10,6 @@ $edit-hover: #E0CB75;
 $ok-color: #5CAD5F;
 $ok-hover: #458A47;
 
-/* Specific colors */
-$colors: (
-primary-color: $primary-color,
-cyan-color: #739D9E,
-green-color: #879E73,
-magenta-color: #8A739E,
-crimson-color: #9E7573,
-emerald-color: #A7AD7F,
-darkblue-color: #7F8FA3,
-purple-color: #A880A4,
-brown-color: #9E8F73
-);
-
-/* Generated styles for each color */
-@each $name, $color in $colors {
-  .fg-#{$name} {
-    color: $color;
-  }
-  .fg-#{$name}:after {
-  background-color: $color;
-}
-.bg-#{$name}:hover{
-background-color: $color;
-border-color: $color;
-color: $white;
-}
-}
-
 /* Controls background styles */
 .control-bg-primary {
   background-color: $primary-color;

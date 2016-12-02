@@ -1,19 +1,28 @@
 (function () {
-  var tdb = angular.module('box', ['box.tasks', 'box.tags']);
-  
-  tdb.controller('AppController', function appController($scope) {
-    $scope.panelActive = true;
-    
-    this.filterUpdate = function(event) {
-      if(event.which === 27){
-        $scope.searchText = '';
-      }
-      $scope.$broadcast('filterUpdate', $scope.searchText);
-    };
-    
-    this.togglePanel = function () {
-      $scope.panelActive = !$scope.panelActive;
-      $scope.mobileHidden = false;
-    };
-  });
+    angular
+        .module('box', ['box.tasks', 'box.storage'])
+        .controller('AppController', AppController);
+
+AppController.$inject=['$scope', 'taskService']
+
+    function AppController($scope, taskService) {
+        var vm = {
+            panelActive: true,
+            filter: taskService.filter,
+            filterUpdate: filterUpdate,
+            togglePanel: togglePanel
+        };
+        return vm;
+
+        function filterUpdate(event) {
+            if (event.which === 27) {
+                vm.filter.text = '';
+            }
+            taskService.filterTasks(vm.filter.text);
+        };
+
+        function togglePanel() {
+            vm.panelActive = !vm.panelActive;
+        };
+    }
 })();

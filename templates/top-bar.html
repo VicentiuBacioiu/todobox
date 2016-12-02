@@ -1,11 +1,11 @@
 <div class="top-bar shadow-bottom container-fluid">
   <div class="row">
     <div class="col-lg-5 col-md-4 col-sm-4 col-xs-4 ellipsis">
-      <div class="menu no-select" ng-click="appCtrl.togglePanel()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
+      <div class="menu no-select" ng-click="app.togglePanel()"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
       <h4>ToDo Box</h4>
     </div>
     <div class="col-lg-7 col-md-8 col-sm-8 col-xs-8">
-        <input type="text" id="searchBox" class="form-control search-box" placeholder="Search..." ng-model="searchText" ng-keyup="appCtrl.filterUpdate($event)">
+        <input type="text" id="searchBox" class="form-control search-box" placeholder="Search..." ng-model="searchText" ng-keyup="app.filterUpdate($event)">
     </div>
   </div>
 </div>

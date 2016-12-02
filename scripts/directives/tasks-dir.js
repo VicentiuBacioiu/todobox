@@ -11,7 +11,9 @@
   tModule.directive('tasks', function() {
     return {
       templateUrl: 'templates/tasks.html',
-      restrict: 'E'
+      restrict: 'E',
+      controller: 'TaskController',
+      controllerAs: 'taskCtrl'
     };
   });
   

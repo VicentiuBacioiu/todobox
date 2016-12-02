@@ -1,20 +1,31 @@
-<div class="tasks transition-ease" ng-controller="TaskController as taskCtrl" ng-class="[{'col-lg-7 col-md-8 col-sm-8':panelActive}, {'col-lg-12 col-md-12 col-sm-12':!panelActive}]">
-  <ul class="list-group" ng-show="tasks.length" data-ng-init="taskCtrl.addGeneralDragEvents()">
-    <div class="swipe-background"><span class="delete">Delete</span><span class="edit">Edit</span></div>
-    <li ng-attr-id="{{ task.id }}" data-ng-init="taskCtrl.addIndividualDragEvents(task.id)" class="list-group-item tdb-box shadow-light no-radius {{task.getColor('fg')}}" ng-class="{'deleted':task.deleted}" ng-repeat="task in tasks | filter:searchText" ng-swipe-left="taskCtrl.swipeRemove(task)" ng-show="task.hasActiveTag()" ng-class="[{editable:task.editable}, {done: task.done}]">
-      <controls></controls>
-      <input class="hidden" type="checkbox" ng-model="task.done" ng-change="taskCtrl.updateTasks()" ng-attr-id="{{task.id + '_check'}}"/>
-      <label class="checkbox" ng-attr-for="{{task.id + '_check'}}"></label>
-      <input class="list-group-item-header tdb-title ellipsis" ng-readonly="!task.editable" ng-model="task.title"/>
-      <input class="list-group-item-text tdb-content ellipsis" ng-readonly="!task.editable" ng-model="task.content"/>
-      <inline-tags></inline-tags>
-      <div class="order-handle"></div>
-      <div class="swipe-handle" ng-show="taskCtrl.isTouchEnabled()"></div>
-      <undo></undo>
-    </li>
-  </ul>
-  <div class="nothing" ng-hide="tasks.length || searchText">Nothing to do now...<div class="smallhint">Click the Add <span class="glyphicon glyphicon-plus-sign fg-blue"></span> button below to add a new task</div></div>
-  <div class="nothing" ng-hide="(tasks | filter:searchText).length || !searchText">We couldn't find what you're looking for...<div class="smallhint">Make sure to double-check the spelling in the search box</div></div>
-  
-  <new-button></new-button>
+<div>
+    <tags></tags>
+    <div class="tasks transition-ease" ng-class="[{'col-lg-7 col-md-8 col-sm-8':app.panelActive}, {'col-lg-12 col-md-12 col-sm-12':!app.panelActive}]">
+        <ul class="list-group" ng-show="taskCtrl.tasks.length" data-ng-init="taskCtrl.addGeneralDragEvents()">
+            <div class="swipe-background"><span class="delete">Delete</span><span class="edit">Edit</span></div>
+            <li ng-attr-id="{{ task.id }}" data-ng-init="taskCtrl.addIndividualDragEvents(task.id)" class="list-group-item tdb-box shadow-light no-radius"
+                ng-repeat="task in taskCtrl.tasks | filter:searchText" ng-swipe-left="taskCtrl.swipeRemove(task)"
+                ng-show="taskCtrl.hasTag(task, taskCtrl.activeTag)" ng-class="[{editable:task.editable}, {done: task.done}, {'deleted':task.deleted}]">
+                <span class="knob" style="background-color: {{task.color}}"></span>
+                <controls></controls>
+                <input class="hidden" type="checkbox" ng-model="task.done" ng-change="taskCtrl.updateTasks()" ng-attr-id="{{task.id + '_check'}}"
+                />
+                <label class="checkbox" ng-attr-for="{{task.id + '_check'}}"></label>
+                <input class="list-group-item-header tdb-title ellipsis" ng-readonly="!task.editable" ng-model="task.title" />
+                <input class="list-group-item-text tdb-content ellipsis" ng-readonly="!task.editable" ng-model="task.content" />
+                <inline-tags></inline-tags>
+                <div class="order-handle"></div>
+                <div class="swipe-handle" ng-show="taskCtrl.isTouchEnabled()"></div>
+                <undo ng-if="task.deleted"></undo>
+            </li>
+        </ul>
+        <div class="nothing" ng-hide="taskCtrl.tasks.length || searchText">Nothing to do now...
+            <div class="smallhint">Click the Add <span class="glyphicon glyphicon-plus-sign fg-blue"></span> button below to add a new task</div>
+        </div>
+        <div class="nothing" ng-hide="(taskCtrl.tasks | filter:searchText).length || !searchText">We couldn't find what you're looking for...
+            <div class="smallhint">Make sure to double-check the spelling in the search box</div>
+        </div>
+
+        <new-button></new-button>
+    </div>
 </div>
