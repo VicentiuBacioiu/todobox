@@ -161,6 +161,14 @@ input[type="checkbox"]:checked + label.checkbox:after {
     height: 0;
     min-height: auto;
   }
+
+  .top-bar h4 {
+    font-size: 15px;
+  }
+
+  .top-bar .menu {
+    margin-right: 0;
+  }
 }  
 
 @media (min-width: 768px) {

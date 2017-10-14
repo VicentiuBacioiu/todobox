@@ -7,12 +7,13 @@
     <script type="text/javascript" src="./lib/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./lib/jquery-ui-touch.min.js"></script>
     <script type="text/javascript" src="./scripts/storage.js"></script>
-    <script type="text/javascript" src="./scripts/tasks.js"></script>
+    <script type="text/javascript" src="./scripts/taskService.js"></script>
+    <script type="text/javascript" src="./scripts/Task.js"></script>
+    <script type="text/javascript" src="./scripts/filters/capitalize-filter.js"></script>
+    <script type="text/javascript" src="./scripts/TaskController.js"></script>
     <script type="text/javascript" src="./scripts/directives/tasks-dir.js"></script>
-    <script type="text/javascript" src="./scripts/tasks-factory.js"></script>
-    <script type="text/javascript" src="./scripts/tags.js"></script>
+    <script type="text/javascript" src="./scripts/Tag.js"></script>
     <script type="text/javascript" src="./scripts/directives/tags-dir.js"></script>
-    <script type="text/javascript" src="./scripts/tags-factory.js"></script>
     <script type="text/javascript" src="./scripts/app.js"></script>
     <script type="text/javascript" src="./scripts/directives/app-dir.js"></script>
     <link href="./styles/bootstrap.min.css" rel="stylesheet"/>
@@ -24,11 +25,10 @@
     <link href="./styles/animations.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body ng-controller="AppController as appCtrl">
+  <body ng-controller="AppController as app">
     <top-bar></top-bar>
     <div class="content container-fluid">
       <div class="row">
-        <tags></tags>
         <tasks></tasks>
       </div>
     </div>

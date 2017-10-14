@@ -1,5 +1,5 @@
 (function(){
-  var tagModule = angular.module('box.tags');
+  var tagModule = angular.module('box.tasks');
   
   tagModule.directive('tags', function() {
     return {

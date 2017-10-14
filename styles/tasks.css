@@ -1,205 +1,245 @@
 /* Task items */
+
 .tdb-box {
-  padding: 15px 20px 15px 45px;
-  margin: 0 0 0px 0;
-  border: 0;
-  border: 1px solid #E0E0E0;
-  border-left: none;
-  border-radius: 0;
-}
-.tasks .list-group {
-  position: relative;
-}
-.tdb-box.editable, .tdb-box.editable:hover {
-  background-color: #FFFEB3;
-  padding-right: 110px;
-}
-.tdb-box.editable .list-group-item-header, .tdb-box.editable .list-group-item-text {
-  outline-color: transparent;
-}
-.tdb-box:hover {
-  background-color: #F5F5F5;
-  padding-right: 110px;
-}
-.supports-touch .tdb-box:hover {
-  background-color: #FFFFFF;
-  padding-right: 20px;
-}
-.tdb-box:hover .tdb-controls {
-  display: block;
-}
-.supports-touch .tdb-box:hover .tdb-controls {
-  display: none;
-}
-.tdb-box:not(.ng-hide) ~ .tdb-box:not(.ng-hide) {
-  border-top: none;
-}
-.tdb-box h4 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.tdb-box .tdb-title {
-  display: block;
-  font-size: 1.5em;
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  margin: 0;
-}
-.tdb-box .tdb-content {
-  display: block;
-  font-size: 1em;
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  margin: 0;
-}
-.tdb-box p:last-child {
-  margin-bottom: 0;
-}
-.tdb-box.editable .tdb-controls.sticky {
-  display: block;
-}
-.tdb-title, .tdb-content {
-  font-weight: normal;
-  margin-left: 30px;
-}
-.tdb-box:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 5px;
-}
-.tdb-box:hover:after {
-  border-color: #F5F5F5;
-}
-.tdb-box.done:after {
-  background-color: #C0C0C0;
-}
-.tdb-box.done, .tdb-box.done .list-group-item-header, .tdb-box.done, .tdb-box.done .list-group-item-text {
-  color: #C0C0C0;
-}
-.tdb-box.done .tdb-tag {
-  color: #C0C0C0;
-}       
-.tdb-box .order-handle {
-  position: absolute;
-  top: 0;
-  left: -2px;
-  width: 15px;
-  bottom: 0;
-  cursor: move;
-  z-index: 99;
-}
-.tdb-box .swipe-handle {
-  position: absolute;
-  top: 0;
-  left: 44px;
-  right: 0;
-  bottom: 0;
-  cursor: move;
-  z-index: 99;
+    padding: 15px 20px 15px 45px;
+    margin: 0 0 0px 0;
+    border: 0;
+    border: 1px solid #E0E0E0;
+    border-left: none;
+    border-radius: 0;
 }
 
+.tasks .list-group {
+    position: relative;
+}
+
+.tdb-box.editable, .tdb-box.editable:hover {
+    background-color: #FFFEB3;
+    padding-right: 110px;
+}
+
+.tdb-box.editable .list-group-item-header, .tdb-box.editable .list-group-item-text {
+    outline-color: transparent;
+}
+
+.tdb-box:hover {
+    background-color: #F5F5F5;
+    padding-right: 110px;
+}
+
+.supports-touch .tdb-box:not(.editable):hover {
+    background-color: #FFFFFF;
+    padding-right: 20px;
+}
+
+.tdb-box:hover .tdb-controls {
+    display: block;
+}
+
+.supports-touch .tdb-box:hover .tdb-controls {
+    display: none;
+}
+
+.tdb-box:not(.ng-hide) ~ .tdb-box:not(.ng-hide) {
+    border-top: none;
+}
+
+.tdb-box h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.tdb-box .tdb-title {
+    display: block;
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin: 0;
+}
+
+.tdb-box .tdb-content {
+    display: block;
+    font-size: 1em;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin: 0;
+}
+
+.tdb-box p:last-child {
+    margin-bottom: 0;
+}
+
+.tdb-box.editable .tdb-controls.sticky {
+    display: block;
+}
+
+.tdb-title, .tdb-content {
+    font-weight: normal;
+    margin-left: 30px;
+}
+
+.tdb-box .knob {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 5px;
+}
+
+.tdb-box.done .knob {
+    background-color: #C0C0C0;
+}
+
+.tdb-box.done, .tdb-box.done .list-group-item-header, .tdb-box.done, .tdb-box.done .list-group-item-text {
+    color: #C0C0C0;
+}
+
+.tdb-box.done .tdb-tag {
+    color: #C0C0C0;
+}
+
+.tdb-box .order-handle {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 15px;
+    bottom: 0;
+    cursor: move;
+    z-index: 99;
+}
+
+.tdb-box .swipe-handle {
+    position: absolute;
+    top: 0;
+    left: 44px;
+    right: 0;
+    bottom: 0;
+    cursor: move;
+    z-index: 99;
+}
+
+.tdb-box.editable .swipe-handle {
+    display: none;
+}
 
 .swipe-background {
-  display: none;
-  position: absolute;
-  width: 100%;
-  text-transform: uppercase;
+    display: none;
+    position: absolute;
+    width: 100%;
+    text-transform: uppercase;
 }
 
 .swipe-background span {
-  display: block;
-  top: 50%;
-  position: absolute;
-  margin-top: -10px;
-  font-size: 1.2em;
+    display: block;
+    top: 50%;
+    position: absolute;
+    margin-top: -10px;
+    font-size: 1.2em;
 }
 
 .swipe-background span.delete {
-  right: 15px;
+    right: 15px;
 }
 
 .swipe-background span.edit {
-  left: 15px;
+    left: 15px;
 }
 
 .swipe-background.control-bg-cancel span.edit {
-  display: none;
+    display: none;
 }
 
 .swipe-background.control-bg-edit span.delete {
-  display: none;
+    display: none;
 }
 
+
 /* Controls */
+
 .tdb-controls {
-  display: none;
-  position: absolute;
-  right: 15px;
+    display: none;
+    position: absolute;
+    right: 15px;
 }
+
 .tdb-control {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #FFFFFF;
-  color: #444444;
-  border: 1px solid #EEEEEE;
-  padding: 10px 2px;
-  text-align: center;
-  cursor: pointer;
-  display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    color: #444444;
+    border: 1px solid #EEEEEE;
+    padding: 10px 2px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 }
+
+.tdb-control:hover {
+    background-color: #F0F0F0;
+    border-color: #DEDEDE;
+}
+
 .tdb-control.tdb-new {
-  font-size: 2em;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  line-height: 46px;
-  padding: 0;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 100;
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    line-height: 46px;
+    padding: 0;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 100;
 }
-.tdb-control.tdb-new span:before{
-  content: "+";
+
+.tdb-control.tdb-new span:before {
+    content: "+";
 }
+
 .tdb-undo {
-  padding: 8px 20px;
-  font-size: 1.1em;
-  cursor: pointer;
-  display: inline-block;
-  position: fixed;
-  bottom: 15px;
-  z-index: 99;
+    padding: 8px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
 }
+
 .tdb-undo>div {
-  position: absolute;
-  top: 50%;
-  margin-top: -14px;
+    position: absolute;
+    top: 50%;
+    margin-top: -14px;
 }
+
 .tdb-undo span.glyphicon {
-  font-size: 1.25em;
-  display: inline-block;
-  margin-right: 5px;
-  line-height: 1.15em;
-  vertical-align: bottom;
+    font-size: 1.25em;
+    display: inline-block;
+    margin-right: 5px;
+    line-height: 1.15em;
+    vertical-align: bottom;
 }
+
 .tdb-undo span.undo-link {
-  font-weight: bold;
+    font-weight: bold;
 }
+
 .supports-touch .tdb-undo {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: none;
-  bottom: 0;
-  top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: none;
+    bottom: 0;
+    top: 0;
 }
+
 .supports-touch .tdb-box.deleted .tdb-undo {
-  display: block;
+    display: block;
 }
