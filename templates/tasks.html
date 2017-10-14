@@ -4,7 +4,7 @@
         <ul class="list-group" ng-show="taskCtrl.tasks.length" data-ng-init="taskCtrl.addGeneralDragEvents()">
             <div class="swipe-background"><span class="delete">Delete</span><span class="edit">Edit</span></div>
             <li ng-attr-id="{{ task.id }}" data-ng-init="taskCtrl.addIndividualDragEvents(task.id)" class="list-group-item tdb-box shadow-light no-radius"
-                ng-repeat="task in taskCtrl.tasks | filter:searchText" ng-swipe-left="taskCtrl.swipeRemove(task)"
+                ng-repeat="task in taskCtrl.tasks | filter:searchText" ng-swipe-left="taskCtrl.swipeRemove(task)" ng-swipe-right="taskCtrl.swipeEdit(task)"
                 ng-show="taskCtrl.hasTag(task, taskCtrl.activeTag)" ng-class="[{editable:task.editable}, {done: task.done}, {'deleted':task.deleted}]">
                 <span class="knob" style="background-color: {{task.color}}"></span>
                 <controls></controls>

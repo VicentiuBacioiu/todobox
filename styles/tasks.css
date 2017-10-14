@@ -27,7 +27,7 @@
     padding-right: 110px;
 }
 
-.supports-touch .tdb-box:hover {
+.supports-touch .tdb-box:not(.editable):hover {
     background-color: #FFFFFF;
     padding-right: 20px;
 }
@@ -119,6 +119,10 @@
     bottom: 0;
     cursor: move;
     z-index: 99;
+}
+
+.tdb-box.editable .swipe-handle {
+    display: none;
 }
 
 .swipe-background {

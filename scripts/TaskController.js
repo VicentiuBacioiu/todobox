@@ -3,9 +3,9 @@
         .module('box.tasks')
         .controller('TaskController', TaskController);
 
-    TaskController.$inject = ['$scope', '$filter', '$timeout', 'taskService']
+    TaskController.$inject = ['$scope', '$filter', '$timeout', 'taskService', 'store']
 
-    function TaskController($scope, $filter, $timeout, taskService) {
+    function TaskController($scope, $filter, $timeout, taskService, store) {
         var vm = this,
             separatorKeys = [9, 13, 186, 188], //Tab, Enter, Semicolumn, Column
             oldTask;
@@ -27,8 +27,6 @@
         vm.removeTag = taskService.removeTag;
         vm.purge = purge;
         vm.setActiveTag = setActiveTag;
-        vm.discardChanges = discardChanges;
-        vm.saveChanges = saveChanges;
         vm.updateTasks = updateTasks;
         vm.updateOrder = updateOrder;
         vm.isActiveTag = isActiveTag;
@@ -36,6 +34,7 @@
         vm.discardChanges = discardChanges;
         vm.addTask = addTask;
         vm.swipeRemove = swipeRemove;
+        vm.swipeEdit = swipeEdit;
         vm.addGeneralDragEvents = addGeneralDragEvents;
         vm.addIndividualDragEvents = addIndividualDragEvents;
 
@@ -99,6 +98,7 @@
                 if (vm.tasks[i].id === task.id) {
                     vm.tasks.splice(i, 1);
                     taskService.filterTasks();
+                    vm.updateTasks();
                     return;
                 }
             }
@@ -121,6 +121,7 @@
             task.isNew = false;
             task.updateColor();
             taskService.filterTasks();
+            vm.updateTasks();
         }
 
         function setActiveTag(tag) {
@@ -156,6 +157,13 @@
             if (this.isTouchEnabled()) {
                 $('.swipe-background').hide();
                 this.remove(task);
+            }
+        }
+
+        function swipeEdit(task) {
+            if (this.isTouchEnabled()) {
+                $('.swipe-background').hide();
+                this.edit(task);
             }
         }
 
